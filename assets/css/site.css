@@ -405,3 +405,22 @@ video.anim{display:block;width:100%;height:auto}
 .sm-home .photo .qcard{left:10.8%;right:8%;top:56.6%;bottom:6.6%;z-index:1}
 @media(max-width:1180px){.sm-home .photo .qcard{position:relative;left:auto;right:auto;top:auto;bottom:auto}}
 .qcard .who img{flex:0 0 clamp(52px,4.4vw,84px);width:clamp(52px,4.4vw,84px);height:clamp(52px,4.4vw,84px);object-fit:cover}
+
+/* animação do topo da home: linhas de cuidado se revezando, mensagem digitando */
+.hero-anim{position:relative;container-type:inline-size;width:100%;max-width:777px;margin-left:auto}
+.hero-anim .hero-visual{width:100%}
+.hero-anim .chips{list-style:none;margin:0;padding:0}
+.hero-anim .chip{position:absolute;left:64.35%;width:34.36%;display:flex;align-items:center;gap:2.2cqw;padding-left:2.6cqw;background:#fff;color:var(--azul-dark);border-radius:.8cqw;box-shadow:0 .3cqw 1.2cqw rgba(17,67,85,.10);font-size:2.15cqw;white-space:nowrap;transition:left .45s cubic-bezier(.2,.7,.2,1),width .45s cubic-bezier(.2,.7,.2,1),background-color .45s}
+.hero-anim .chip svg{width:2.6cqw;height:2.6cqw;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;flex:none}
+.hero-anim .chip.on{left:59.46%;width:39.25%;background:var(--laranja)}
+.hero-anim .bubble{position:absolute;background:#d1f8e5;border-radius:1.2cqw;color:var(--azul-dark);padding:3.4cqw 3cqw 0 3.1cqw;box-sizing:border-box;box-shadow:0 .3cqw 1.2cqw rgba(17,67,85,.08)}
+.hero-anim .bubble::after{content:"";position:absolute;left:47%;bottom:-1.4cqw;border:1.5cqw solid transparent;border-top-color:#d1f8e5;border-bottom:0}
+.hero-anim .bubble p{margin:0;font-size:3.05cqw;line-height:1.27;transition:opacity .35s}
+.hero-anim .bubble .dots{position:absolute;left:3.1cqw;top:3.6cqw;display:flex;gap:.8cqw;opacity:0;transition:opacity .2s}
+.hero-anim .bubble .dots b{width:1.3cqw;height:1.3cqw;border-radius:50%;background:var(--azul-dark);opacity:.35;animation:dot 1s infinite}
+.hero-anim .bubble .dots b:nth-child(2){animation-delay:.15s}.hero-anim .bubble .dots b:nth-child(3){animation-delay:.3s}
+.hero-anim .bubble.typing p{opacity:0}.hero-anim .bubble.typing .dots{opacity:1}
+@keyframes dot{0%,100%{transform:translateY(0);opacity:.35}50%{transform:translateY(-.5cqw);opacity:.9}}
+.hero-anim .tag-dia{position:absolute;display:flex;align-items:center;justify-content:center;background:#cefbe4;color:var(--azul-dark);border-radius:2cqw;font-size:1.9cqw;animation:pulse 2.2s ease-in-out infinite}
+@keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(98,175,152,.45)}50%{box-shadow:0 0 0 .9cqw rgba(98,175,152,0)}}
+@media (prefers-reduced-motion:reduce){.hero-anim .tag-dia{animation:none}.hero-anim .chip{transition:none}}
