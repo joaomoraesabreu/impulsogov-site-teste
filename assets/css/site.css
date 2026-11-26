@@ -24,7 +24,7 @@
 *{box-sizing:border-box;min-width:0}
 html{scroll-behavior:smooth;scroll-padding-top:110px}
 body{margin:0;background:#fff;color:var(--ink);font:18px/1.6 var(--font);overflow-x:clip;-webkit-font-smoothing:antialiased}
-img{max-width:100%;display:block}
+img{max-width:100%;height:auto;display:block}
 a{color:inherit}
 h1,h2,h3{font-weight:400;letter-spacing:-.01em;margin:0 0 .55em;text-wrap:balance;line-height:1.08}
 h1{font-size:clamp(40px,4.6vw,76px)}
@@ -361,3 +361,47 @@ video.anim{display:block;width:100%;height:auto}
 .pessoa .tag{position:relative;left:auto;right:auto;bottom:auto;margin:-40px 16px 16px}
 .logo-grid img{border:1px solid #e3ecf0}
 .qr .box:has(img){border:0}.qr .box img{width:100%;height:auto;image-rendering:pixelated}
+
+/* hero visual (estático, a partir do Figma) */
+.hero-visual{width:100%;height:auto;animation:heroIn .9s ease-out both}
+@keyframes heroIn{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){.hero-visual{animation:none}}
+
+/* bloco Saúde Mental da home: foto sem distorção, card alinhado ao Figma */
+.btn-branco{background:#fff;color:var(--azul-dark)}
+.sm-home{align-items:start}
+.sm-home .photo img{height:auto;display:block}
+.sm-home .photo .qcard{left:11.7%;right:8.8%;top:58%;bottom:8.1%;justify-content:center}
+.sm-home .txt{align-self:stretch}
+.qcard .who img{width:clamp(48px,4.4vw,84px);height:auto;border-radius:10px;flex:none}
+.qcard q{text-align:left}
+@media (max-width:1180px){
+  .sm-home .photo .qcard{position:static;margin:-48px 6% 32px;box-shadow:0 8px 24px rgba(17,67,85,.12)}
+  .sm-home .photo{background:var(--azul-dark)}
+}
+
+/* CTA com foto: botão HTML na mesma posição do Figma (foto sem botão embutido) */
+.cta-photo{container-type:inline-size}
+.cta-photo .btn,.cta-photo .btn{left:7.8cqw;top:61.6%;bottom:auto;height:20%;min-height:0;padding:0 4cqw;font-size:clamp(13px,2.3cqw,18px);border-radius:1.2cqw;white-space:nowrap}
+
+/* linha do tempo: abaixo de 1180px vira lista vertical (ignora a coluna fixa do desktop) */
+@media(max-width:1180px){
+  .timeline{grid-template-columns:minmax(0,1fr);margin-top:48px}
+  .timeline .tl{grid-column:1!important;grid-row:auto!important;padding:0 0 32px 40px}
+  .timeline::before{left:7px;right:auto;top:0;bottom:0;width:3px;height:auto}
+  .tl::after{display:none}.tl i{left:1px;top:14px;bottom:auto;transform:none}
+  .tl b{font-size:clamp(36px,8vw,56px);margin-bottom:10px}
+}
+@media(max-width:1180px){.case-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important}}
+@media(max-width:560px){.case-grid{grid-template-columns:minmax(0,1fr)!important}}
+@media(max-width:1180px){
+  .sm-home .photo img{aspect-ratio:1057/548;object-fit:cover;object-position:top;height:auto}
+  .sm-home .photo .qcard{margin-top:-32px}
+}
+@media(max-width:560px){
+  .conselho-grid,.pessoas{grid-template-columns:minmax(0,1fr)}
+  .conselho-grid .pessoa img{max-height:420px;width:100%;object-fit:cover;object-position:top}
+}
+.sm-home .photo .qcard{left:10.8%;right:8%;top:56.6%;bottom:6.6%;z-index:1}
+@media(max-width:1180px){.sm-home .photo .qcard{position:relative;left:auto;right:auto;top:auto;bottom:auto}}
+.qcard .who img{flex:0 0 clamp(52px,4.4vw,84px);width:clamp(52px,4.4vw,84px);height:clamp(52px,4.4vw,84px);object-fit:cover}
